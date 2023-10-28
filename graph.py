@@ -65,7 +65,7 @@ def gen_graph(task=1):
         #
         # Simple structure: only one switch and lots of hosts
         switch=1
-        host=3
+        host=10
         
         switches = ['s{}'.format(i) for i in range(1, 1+switch)]
         hosts = ['h{}'.format(i) for i in range(1, 1+host)]

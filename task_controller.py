@@ -40,8 +40,6 @@ import pox.openflow.libopenflow_01 as of
 # If you want, you can define global variables, import libraries, or do others
 ###
 
-from queue import PriorityQueue
-
 def init(net) -> None:
     #
     # net argument has following structure:
@@ -75,8 +73,6 @@ def init(net) -> None:
     ###
     pass
 
-
-
 def addrule(switchname: str, connection) -> None:
     #
     # This function is invoked when a new switch is connected to controller
@@ -95,7 +91,7 @@ def addrule(switchname: str, connection) -> None:
     ###
     pass
 
-from scapy.all import *
+from scapy.all import * # you can use scapy in this task
 
 def handlePacket(switchname, event, connection):
     global bestport
