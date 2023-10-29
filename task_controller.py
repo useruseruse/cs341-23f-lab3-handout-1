@@ -94,7 +94,6 @@ def addrule(switchname: str, connection) -> None:
 from scapy.all import * # you can use scapy in this task
 
 def handlePacket(switchname, event, connection):
-    global bestport
     packet = event.parsed
     if not packet.parsed:
         print('Ignoring incomplete packet')
