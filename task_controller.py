@@ -25,15 +25,25 @@ import pox.openflow.libopenflow_01 as of
 #   - Let switches route via Dijkstra
 #   - Match ARP and ICMP over IPv4 packets
 #
-# Task 4: Implementing simple DNS censorship 
-#   - Let switches send DNS packets to Controller
-#       - By default, switches will send unhandled packets to controller
-#   - Drop DNS requests for asking cs341dangerous.com, relay all other packets correctly
+# Task 4: Implementing simple DNS-based censorship 
+#   - Let switches send all DNS packets to Controller
+#       - Create proper forwarding rules, send all DNS queries and responses to the controller
+#       - HTTP traffic should not be forwarded to the controller
+#   - Check if DNS query contains cs341dangerous.com
+#       - For such query, drop it and reply it with empty DNS response
+#       - For all other packets, route them normally
+#       
 #
-# Task 5: Implementing simple HTTP censorship 
-#   - Let switches send HTTP packets to Controller
-#       - By default, switches will send unhandled packets to controller
-#   - Additionally, drop HTTP requests for heading cs341dangerous.com, relay all other packets correctlys
+# Task 5: Implementing more efficient DNS-based censorship 
+#   - Let switches send only DNS query packets to Controller
+#       - Create proper forwarding rules, send only DNS queries to the controller
+#   - Check if DNS query contains cs341dangerous.com
+#       - If such query is found, insert a new rule to switch to track the DNS response
+#           - let the swtich route DNS response to the controller
+#       - When the corresponding DNS response arrived, do followings:
+#           - parse DNS response, insert a new rule to block all traffic from/to the server
+#           - reply the DNS request with empty DNS response
+#       - For all other packets, route them normally
 
 
 ###
