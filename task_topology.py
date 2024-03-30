@@ -1,8 +1,9 @@
 from typing import List, Tuple
 
-from mininet.topo import Topo
-
+from mininet.topo import Topo       
+        
 class Topology(Topo):
+   
     def build(self, switches: List[str], hosts: List[str], links: List[Tuple[str, str, int]]) -> None:
         # KAIST CS341 SDN Lab Task 1: Building Your Own Network
         #
@@ -19,11 +20,18 @@ class Topology(Topo):
         ###
         # YOUR CODE HERE
         ###
-
-        '''
-        # ex) switches = ['s1'], hosts = ['h1'], links = [('s1','h1',100),]
-        self.addSwitch('s1')
-        self.addHost('h1')
-        self.addLink('s1', 'h1')
-        '''
-        pass
+        for s in switches:
+            self.addSwitch(s)
+        
+        for h in hosts: 
+            self.addHost(h)
+        
+        for l in links:
+            self.addLink(l[0], l[1])
+        
+        # # ex) switches = ['s1'], hosts = ['h1'], links = [('s1','h1',100),]
+        # self.addSwitch('s1')
+        # self.addHost('h1')
+        # self.addLink('s1', 'h1')
+        
+        
